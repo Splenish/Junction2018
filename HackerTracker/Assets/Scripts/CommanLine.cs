@@ -29,9 +29,9 @@ public class CommanLine : MonoBehaviour {
 
     //private GameObject input;
 
-    private Vector3 popupLoc;
+    
 
-    bool solved;
+    
     bool popUpSpawned;
 
     private string[] hacks = new string[] {"penetrator.exe", "FinnishHorse", "Back Burner", "1337Hackz.exe", "JunctiOff", "Minecraft.exe",
@@ -52,8 +52,8 @@ public class CommanLine : MonoBehaviour {
         reader = new StreamReader(path);
         pointsUpperLimit = Random.Range(80,120);
         points = 0;
-        popupLoc = new Vector3(theCanvas.rect.width * theCanvas.localScale.x * 0.2f, theCanvas.rect.height * theCanvas.localScale.y * 0.6f,0);
-        solved = false;
+        
+        
         popUpSpawned = false;
         hackIterator = 0;
         Random.InitState(System.DateTime.Now.Millisecond); 
@@ -63,7 +63,7 @@ public class CommanLine : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(Input.anyKeyDown && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2)) {
             
 
@@ -89,17 +89,13 @@ public class CommanLine : MonoBehaviour {
             char c = (char)cInt;
             Code.text = Code.text + c;
 
-            //Debug.Log(points);
-          
-            //reader.Close();
-            //Debug.Log("paska");
         }
     }
 
     void HackPopUp() {
         if(popUpSpawned == false && points >= pointsUpperLimit) {
             chosenHack = Random.Range(0,hacks.Length);
-            //Debug.Log("TYPE PASKA TO SEND VIRUS");
+          
             ThePopUp.SetActive(true);
             popUpSpawned = true;
             HackName.text = hacks[chosenHack];
@@ -107,7 +103,7 @@ public class CommanLine : MonoBehaviour {
 
         if(hackIterator >= hacks[chosenHack].Length-1) {
             popUpSpawned = false;
-            solved = true;
+            
             hackIterator = 0;
             points = 0;
             PopUpText.text = "";
@@ -125,16 +121,7 @@ public class CommanLine : MonoBehaviour {
             }
         }
 
-        
 
-        
-
-       // PopUpText.text = PopUpText +;
-        //Debug.Log(Input.inputString);
-
-        //input = ThePopUp.Find("InputField").gameObject;
-        //input.GetComponent<InputField>().ActivateInputField();
-        //input.GetComponent<InputField>().Select();
     }
 
 

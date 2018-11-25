@@ -48,6 +48,9 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Input.GetKeyDown("escape")) {
+            SceneManager.LoadScene(0);
+        }
         switch (state) {
             case GameState.Menu:
                 break;
